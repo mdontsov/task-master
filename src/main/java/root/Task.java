@@ -24,7 +24,7 @@ public class Task {
     }
 
     private void readOutput() throws IOException {
-        outputFile = inputFile = new String(Files.readAllBytes(Paths.get("output.xml")));
+        outputFile = new String(Files.readAllBytes(Paths.get("output.xml")));
         System.out.println(outputFile);
     }
 
@@ -89,9 +89,9 @@ public class Task {
         }
 
         for (Map.Entry<String, String> entry : propsMap.entrySet()) {
-            inputFile = inputFile.replace("${" + entry.getKey() + "}", entry.getValue());
+            outputFile = inputFile.replace("${" + entry.getKey() + "}", entry.getValue());
             BufferedWriter writer = new BufferedWriter(new FileWriter("output.xml", false));
-            writer.write(inputFile);
+            writer.write(outputFile);
             writer.close();
         }
     }
@@ -99,7 +99,8 @@ public class Task {
     public static void main(String... args) throws IOException {
 
         Task task = new Task();
-//        task.readSourceAndProcessData();
+        
+        task.readSourceAndProcessData();
 //        task.readSource();
 //        task.readInput();
 //        task.readOutput();
