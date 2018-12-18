@@ -91,7 +91,7 @@ public class Task {
         for (Map.Entry<String, String> entry : propsMap.entrySet()) {
             outputFile = inputFile.replace("${" + entry.getKey() + "}", entry.getValue());
             BufferedWriter writer = new BufferedWriter(new FileWriter("output.xml", false));
-            writer.write(outputFile);
+            writer.write(inputFile);
             writer.close();
         }
     }
